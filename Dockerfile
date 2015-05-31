@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="C.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-# update packages
+# Update packages
 RUN apt-get -y update
 RUN apt-get -y upgrade
 
