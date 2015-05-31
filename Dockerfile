@@ -1,7 +1,18 @@
 FOM ubuntu:12.04
 MAINTAINER Felix Maldonado <tae.one@gmail.com>
 
+<<<<<<< HEAD
 ENTRYPOINT ["/bin/bash"]
+=======
+ENV DEBIAN_FRONTEND="noninteractive" \
+    LANG="en_US.UTF-8" \
+    LC_ALL="C.UTF-8" \
+    LANGUAGE="en_US.UTF-8"
+
+# Update packages
+RUN apt-get -y update
+RUN apt-get -y upgrade
+>>>>>>> 6ce8365deefbf0578c2cb201950cc4244f1c21d9
 
 # Install Oracle Java 7
 RUN apt-get -y update
