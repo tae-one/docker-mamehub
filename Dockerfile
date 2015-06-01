@@ -6,26 +6,20 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="C.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-# Install Oracle Java 7
-RUN apt-get -y update
-RUN apt-get -y install python-software-properties
-RUN apt-get -y install openjdk-7-jre
+EXPOSE 6805 
 
-# Install MAMEHub dependencies
-RUN apt-get -y update
-RUN apt-get -y install wget zip unzip libsdl1.2-dev libfontconfig1-dev libgconf2-dev libgtk2.0-dev libsdl-ttf2.0-dev yasm libqt4-dev aria2 libswt-*
+# Install packages
+RUN apt-get -y update && apt-get -y install python-software-properties openjdk-7-jre wget zip unzip libsdl1.2-dev libfontconfig1-dev libgconf2-dev libgtk2.0-dev libsdl-ttf2.0-dev yasm libqt4-dev aria2 libswt-*
+
 RUN mkdir -p ~/.swt/lib/linux/x86_64/
 RUN ln -s /usr/lib/jni/libswt-* ~/.swt/lib/linux/x86_64/
 
 # Download and extract MAME Hub
-RUN ["/bin/bash", "-c", "cd /opt && wget http://10ghost.net/MAMEHubDownloads/MAMEHub2_3.1.0.zip"]
-RUN ["/bin/bash", "-c", "cd /opt && unzip *.zip"]
+ADD http://10ghost.net/MAMEHubDownloads/MAMEHub2_3.1.0.zip /app/MAMEHub2_3.1.0.zip
+RUN ["/bin/bash", "-c", "cd /app && unzip *.zip"]
 
-VOLUME ["/config","/data"]
+ADD http://10ghost.net/MAMEHubDownloads/Tools/Updater3.jar /app/Updater.jar
+RUN java -jar /app/Updater.jar
 
-ENV RUN_AS_ROOT="true" \
-    CHANGE_DIR_RIGHTS="false"
-
-EXPOSE 6805 
-
-CMD ["/bin/bash", "-c", "/opt/MAMEHub/MAMEHub.sh"]
+WORKDIR /app/MAMEHub/MAMEHubRepo/Binaries/dist
+CMD ["/bin/bash", "-c", "java -Xmx1g -jar MAMEHubClient.jar"]
