@@ -23,4 +23,4 @@ RUN chmod u+x /start.sh
 
 EXPOSE 6805
 
-CMD ["start.sh"]
+CMD ["/start.sh"]
