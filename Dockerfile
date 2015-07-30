@@ -18,6 +18,9 @@ RUN ["/bin/bash", "-c", "unzip MAMEHub2_3.1.0.zip"]
 RUN mkdir -p ~/.swt/lib/linux/x86_64/
 RUN ln -s /usr/lib/jni/libswt-* ~/.swt/lib/linux/x86_64/
 
+ADD ./start.sh /start.sh
+RUN chmod u+x /start.sh
+
 EXPOSE 6805
 
 CMD ["start.sh"]

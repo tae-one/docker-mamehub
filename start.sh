@@ -1,3 +1,5 @@
-#!/bin/bash
+#! /bin/sh
 
-./MAMEHUB/MAMEHub.sh
+cd /MAMEHub
+
+./MAMEHub.sh
