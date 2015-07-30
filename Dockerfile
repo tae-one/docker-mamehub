@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Felix Maldonado <tae.one@gmail.com>
 
 ENV DEBIAN_FRONTEND="noninteractive" \
@@ -23,3 +23,4 @@ RUN chmod u+x /start.sh
 
 EXPOSE 6805
 
+CMD ["/start.sh"]
