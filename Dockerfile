@@ -20,4 +20,5 @@ RUN ln -s /usr/lib/jni/libswt-* ~/.swt/lib/linux/x86_64/
 
 EXPOSE 6805
 
-CMD ["/MAMEHub/MAMEHub.sh"]
+WORKDIR /MAMEHub
+CMD ["MAMEHub.sh"]
