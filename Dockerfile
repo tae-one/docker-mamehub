@@ -22,4 +22,6 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 6805
 
+EXPOSE 5900
+ 
 CMD ["/usr/bin/supervisord"]
