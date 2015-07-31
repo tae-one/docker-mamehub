@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="C.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-ENV DISPLAY :0
+ENV DISPLAY :2
 
 VOLUME ["/roms"]
 
@@ -20,7 +20,7 @@ RUN ["/bin/bash", "-c", "unzip MAMEHub2_3.1.0.zip"]
 RUN mkdir -p ~/.swt/lib/linux/x86_64/
 RUN ln -s /usr/lib/jni/libswt-* ~/.swt/lib/linux/x86_64/
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 6805
 
