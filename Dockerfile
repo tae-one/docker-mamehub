@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LC_ALL="C.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
+ENV DISPLAY :0
+
 VOLUME ["/roms"]
 
 RUN apt-get update && \
