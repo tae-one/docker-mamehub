@@ -1,4 +1,3 @@
-q
 FROM ubuntu:trusty
 MAINTAINER Felix Maldonado <tae.one@gmail.com>
 
